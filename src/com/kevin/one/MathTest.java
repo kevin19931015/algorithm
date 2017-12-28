@@ -1,5 +1,7 @@
 package com.kevin.one;
 
+import java.util.Stack;
+
 public class MathTest {
     //判断一个数是不是素数
     public static boolean isPrime(int number){
@@ -28,5 +30,39 @@ public class MathTest {
             t=(c/t+t)/2.0;
         }
         return t;
+    }
+    //根据字符串算术表达式计算结果
+    public static double Evaluate(String expression){
+        String[] expr = expression.split("");
+        Stack<String> ops = new Stack<>();
+        Stack<Double> vals = new Stack<>();
+        double val = 0;
+        boolean lastIsDouble = false;
+        for(String s:expr){
+            if (s.equals("(")){
+                lastIsDouble=false;
+            } else if (s.equals("+")) {
+                ops.push(s);lastIsDouble=false;
+            } else if (s.equals("-")) {
+                ops.push(s);lastIsDouble=false;
+            } else if (s.equals("*")) {
+                ops.push(s);lastIsDouble=false;
+            } else if (s.equals("/")) {
+                ops.push(s);lastIsDouble=false;
+            } else if (s.equals(")")) {
+                String op = ops.pop();
+                val = vals.pop();
+                if (op.equals("+")) val= vals.pop() + val;
+                if (op.equals("-")) val= vals.pop() - val;
+                if (op.equals("*")) val= vals.pop() * val;
+                if (op.equals("/")) val= vals.pop() / val;
+                vals.push(val);
+            }else{
+                val = Double.parseDouble(s);
+                vals.push(lastIsDouble?vals.pop()*10+val:val);
+                lastIsDouble = true;
+            }
+        }
+        return vals.pop();
     }
 }
