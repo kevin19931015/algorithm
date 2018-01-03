@@ -3,13 +3,13 @@ package com.kevin.one;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-public class SimpleStack<T> implements Iterable<T>{
+public class ArrayStack<T> implements Iterable<T>{
     //栈中实际元素数量
     private int N;
     //底层数组
     private T[] elements;
     //构造函数
-    public SimpleStack(int cap) { elements =  (T[])new Object[cap<10?10:cap]; }
+    public ArrayStack(int cap) { elements =  (T[])new Object[cap<10?10:cap]; }
     //判断是否为空
     public boolean isEmpty(){return N==0;}
     //获取元素数量

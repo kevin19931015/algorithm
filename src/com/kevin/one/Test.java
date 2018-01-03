@@ -1,7 +1,5 @@
 package com.kevin.one;
 
-import java.util.Iterator;
-
 public class Test {
     public  static void main(String[] args){
         double[] doubles = {1.0,2,6,3,8,4,7};
@@ -37,12 +35,20 @@ public class Test {
         //字符串表达式
         System.out.println(Math.Evaluate("(((4*(1+2))-9)/10)"));
         //SimpleStack类测试
-        SimpleStack ss = new SimpleStack(0);
+        ArrayStack ss = new ArrayStack(0);
         ss.push("a");
         ss.push("b");
         ss.push("c");
         ss.push(1);
         for(Object s :ss){
+            System.out.println(s);
+        }
+        //linkedQueue
+        LinkedQueue<String> lq = new LinkedQueue<>();
+        lq.push("sb");
+        lq.push("sb1");
+        lq.push("sb2");
+        for(String s:lq){
             System.out.println(s);
         }
     }
